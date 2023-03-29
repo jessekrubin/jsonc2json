@@ -1,12 +1,3 @@
-# jsonc2json
-
-python & rust package to strip comments from jsonc strings/bytes
-
-uses: https://docs.rs/json_comments/latest/json_comments/
-
-## Usage:
-
-```python
 from jsonc2json import jsonc2json
 
 jsonc_string = """
@@ -35,8 +26,3 @@ print(json_string)
 
 assert isinstance(json_string, str)
 assert isinstance(jsonc2json(jsonc_string.encode()), bytes)
-```
-
-## TODO:
-
-- [ ] Add options present in the rust package

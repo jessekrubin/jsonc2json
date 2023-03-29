@@ -1,0 +1,16 @@
+[package]
+name = "jsonc2json"
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "jsonc2json"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "jsonc2json"
+crate-type = ["cdylib"]
+
+[dependencies]
+json_comments = "0.2.1"
+pyo3 = "0.18.1"
