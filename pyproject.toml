@@ -18,9 +18,14 @@ maintainers = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
 [tool.maturin]
 python-source = "python"
 features = ["pyo3/extension-module"]
-module-name = "jsonc2json.libjsonc2json"
+module-name = "jsonc2json._jsonc2json"
 
 [tool.pytest.ini_options]
+testpaths = [
+    "tests",
+    "python"
+]
 addopts = [
-    "--doctest-modules"
+    "--doctest-modules",
+    "-v"
 ]

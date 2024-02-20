@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import List, Optional
 import sys
-from .libjsonc2json import __version_lib__, jsonc2json_bin
+from ._jsonc2json import __version_lib__, jsonc2json_bin
 
 
 def main(args: Optional[List[str]] = None) -> int:
