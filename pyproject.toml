@@ -4,13 +4,14 @@ build-backend = "maturin"
 
 [project]
 name = "jsonc2json"
-version = "0.0.2"
+version = "0.0.3"
 description = "jsonc2json ~ convert jsonc 2 json ~ python + rust"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: 3",
 ]
 authors = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
 maintainers = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
@@ -19,6 +20,10 @@ maintainers = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
 python-source = "python"
 features = ["pyo3/extension-module"]
 module-name = "jsonc2json._jsonc2json"
+
+[tool.black]
+target-version = ["py38"]
+line-length = 88
 
 [tool.pytest.ini_options]
 testpaths = [

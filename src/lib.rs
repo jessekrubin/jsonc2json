@@ -31,13 +31,11 @@ fn jsonc2json_str(string: String) -> PyResult<String> {
     let mut stripped = String::new();
     let result = StripComments::new(string.as_bytes()).read_to_string(&mut stripped);
     match result {
-        Ok(_) => {
-            Ok(stripped)
-        }
+        Ok(_) => Ok(stripped),
         Err(e) => {
             if e.kind() == ErrorKind::InvalidData {
                 Err(PyValueError::new_err("Invalid JSON"))
-            } else{
+            } else {
                 Err(PyValueError::new_err("Unknown error"))
             }
         }

@@ -1,6 +1,6 @@
 [package]
 name = "jsonc2json"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 include = ["src/**/*", "Cargo.toml", "LICENSE", "README.md"]
 
