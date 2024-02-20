@@ -4,11 +4,8 @@ version = "0.0.3"
 edition = "2021"
 include = ["src/**/*", "Cargo.toml", "LICENSE", "README.md"]
 
-[[bin]]
-name = "jsonc2json"
-
 [lib]
-name = "jsonc2json"
+name = "pyjsonc2json"
 crate-type = ["cdylib"]
 
 [dependencies]

@@ -8,6 +8,7 @@ import commentjson
 import orjson
 
 import rapidjson
+
 jsonc_string_1 = """
 { // This is a comment
     "id": 1,
@@ -47,8 +48,11 @@ jsonc_string_3 = """{
 
 jsonc_strings = [jsonc_string_1, jsonc_string_2]
 
+
 def rapidjson_strip_and_loads(json_str):
     return rapidjson.loads(json_str, parse_mode=rapidjson.PM_COMMENTS)
+
+
 # def loads
 def strip_and_loads(json_str):
     return commentjson.loads(json_str)
@@ -59,15 +63,18 @@ def strip_and_loads(json_str):
     # # Return the stripped JSON string
     # return stripped
 
+
 def rs_strip_and_loads(json_str):
     # return json.loads( jsonc2json(json_str))
-    return orjson.loads( jsonc2json(json_str.encode()))
-def main()->None:
+    return orjson.loads(jsonc2json(json_str.encode()))
+
+
+def main() -> None:
     # jsonc_string = Path('_data').joinpath('sample.json').read_text()
 
     for jsonc_string in jsonc_strings:
-        py_data= strip_and_loads(jsonc_string)
-        rs_data= rs_strip_and_loads(jsonc_string)
+        py_data = strip_and_loads(jsonc_string)
+        rs_data = rs_strip_and_loads(jsonc_string)
         rj_data = rapidjson_strip_and_loads(jsonc_string)
 
         # py_data = json.loads(stripped_json_str)
@@ -77,10 +84,10 @@ def main()->None:
 
         iterations = 1000
 
-        ti  = perf_counter()
+        ti = perf_counter()
         for i in range(iterations):
             strip_and_loads(jsonc_string)
-        tf  = perf_counter()
+        tf = perf_counter()
 
         print(f"Python: {tf-ti}")
 
@@ -95,15 +102,6 @@ def main()->None:
             rs_strip_and_loads(jsonc_string)
         tf = perf_counter()
         print(f"Rust: {tf-ti}")
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
