@@ -4,6 +4,12 @@ python & rust package to strip comments from jsonc strings/bytes
 
 uses: https://docs.rs/json_comments/latest/json_comments/
 
+## Install:
+
+```bash
+pip install jsonc2json
+```
+
 ## Usage:
 
 ```python
@@ -37,6 +43,19 @@ assert isinstance(json_string, str)
 assert isinstance(jsonc2json(jsonc_string.encode()), bytes)
 ```
 
+## CLI
+
+```bash
+# stdin
+$ echo '{"a": 1 /* comment */, "b": 2}' | python -m jsonc2json
+'{"a": 1              , "b": 2}'
+# file (still stdin!)
+$ python -m jsonc2json < has-comments.jsonc > no-comments.json
+```
+
+
 ## TODO:
 
 - [ ] Add options present in the rust package
+- [ ] Clap CLI?
+- [ ] build confit
