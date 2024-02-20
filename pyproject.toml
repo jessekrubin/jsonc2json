@@ -1,26 +1,38 @@
 [build-system]
-requires = ["maturin>=0.14,<0.15"]
+requires = ['maturin>=0.14.16,<2']
 build-backend = "maturin"
 
 [project]
 name = "jsonc2json"
-version = "0.0.2"
+version = "0.0.3"
 description = "jsonc2json ~ convert jsonc 2 json ~ python + rust"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
+license = "MIT OR Apache-2.0"
+keywords = ["json", "jsonc", "rust", "pyo3"]
+readme = "README.md"
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: 3",
 ]
 authors = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
 maintainers = [{ name = "Jesse Rubin", email = "jessekrubin@gmail.com" }]
 
+[project.urls]
+documentation = "https://github.com/jessekrubin/jsonc2json"
+homepage = "https://github.com/jessekrubin/jsonc2json"
+source = "https://github.com/jessekrubin/jsonc2json"
+
 [tool.maturin]
 python-source = "python"
 features = ["pyo3/extension-module"]
-module-name = "jsonc2json.libjsonc2json"
+module-name = "jsonc2json._jsonc2json"
+
+[tool.black]
+target-version = ["py38"]
+line-length = 88
 
 [tool.pytest.ini_options]
-addopts = [
-    "--doctest-modules"
-]
+testpaths = ["tests", "python"]
+addopts = ["--doctest-modules", "-v"]

@@ -10,18 +10,19 @@ use std::vec::Vec;
 fn jsonc2json_bin<'a>(py: Python<'a>, b: &[u8]) -> PyResult<&'a PyBytes> {
     let mut buf = Vec::new();
     let result = StripComments::new(b).read_to_end(&mut buf);
-
-    // raise error if invalid json
     match result {
-        Ok(_) => {}
+        Ok(_) => {
+            let pbres = PyBytes::new(py, &buf[..]);
+            Ok(pbres)
+        }
         Err(e) => {
             if e.kind() == ErrorKind::InvalidData {
-                return Err(PyValueError::new_err("Invalid JSON"));
+                Err(PyValueError::new_err("Invalid JSON"))
+            } else {
+                Err(PyValueError::new_err("Unknown error"))
             }
         }
     }
-    let pbres = PyBytes::new(py, &buf[..]);
-    Ok(pbres)
 }
 
 // string function
@@ -30,18 +31,20 @@ fn jsonc2json_str(string: String) -> PyResult<String> {
     let mut stripped = String::new();
     let result = StripComments::new(string.as_bytes()).read_to_string(&mut stripped);
     match result {
-        Ok(_) => {}
+        Ok(_) => Ok(stripped),
         Err(e) => {
             if e.kind() == ErrorKind::InvalidData {
-                return Err(PyValueError::new_err("Invalid JSON"));
+                Err(PyValueError::new_err("Invalid JSON"))
+            } else {
+                Err(PyValueError::new_err("Unknown error"))
             }
         }
     }
-    Ok(stripped)
 }
 
 /// A Python module implemented in Rust.
 #[pymodule]
+#[pyo3(name = "_jsonc2json")]
 fn libjsonc2json(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add("__version_lib__", env!("CARGO_PKG_VERSION"))?;
     m.add_function(wrap_pyfunction!(jsonc2json_str, m)?)?;

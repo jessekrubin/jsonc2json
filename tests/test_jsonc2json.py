@@ -6,6 +6,23 @@ import pytest
 PWD = Path(__file__).parent
 REPO_ROOT = PWD.parent
 
+JSONC_STRING = """
+{
+    "name": /* full */ "John Doe",
+    "age": 43,
+    "phones": [
+        "+44 1234567", // work phone
+        "+44 2345678"  // home phone
+    ]  # hash comment
+}
+""".strip()
+
+EXPECTED_JSON_DATA = {
+    "name": "John Doe",
+    "age": 43,
+    "phones": ["+44 1234567", "+44 2345678"],
+}
+
 
 def test_version():
     assert jsonc2json.__version__ is not None
@@ -42,12 +59,22 @@ def test_jsonc2json_bytes():
     assert isinstance(loaded, dict)
 
 
+def test_jsonc2json_simple() -> None:
+    jsonstr = jsonc2json.jsonc2json(JSONC_STRING)
+    assert json.loads(jsonstr) == EXPECTED_JSON_DATA
+
+
 def test_invalid_json():
     jsonstr = "/* foo "
     with pytest.raises(ValueError):
         _stripped = jsonc2json.jsonc2json(jsonstr)
     with pytest.raises(ValueError):
         _stripped = jsonc2json.jsonc2json(jsonstr.encode("utf-8"))
+
+
+@pytest.mark.skip("TODO")
+def test_strip_whitespace():
+    raise NotImplementedError("TODO")
 
 
 def test_dev():
