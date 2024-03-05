@@ -10,4 +10,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 json_comments = "0.2.2"
-pyo3 = "0.20.2"
+pyo3 = "0.20.3"
