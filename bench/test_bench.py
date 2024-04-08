@@ -1,7 +1,4 @@
-from os import path
-from pathlib import Path
 from time import perf_counter
-import re
 import json
 from jsonc2json import jsonc2json
 import commentjson
