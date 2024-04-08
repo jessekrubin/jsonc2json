@@ -1,10 +1,12 @@
+use std::io::{ErrorKind, Read};
+use std::vec::Vec;
+
 use json_comments::StripComments;
+
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use pyo3::pybacked::{PyBackedBytes, PyBackedStr};
 use pyo3::types::PyBytes;
-use std::io::{ErrorKind, Read};
-use std::vec::Vec;
 
 #[derive(FromPyObject)]
 pub enum BytesOrString {
