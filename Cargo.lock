@@ -40,7 +40,7 @@ checksum = "9dbbfed4e59ba9750e15ba154fdfd9329cee16ff3df539c2666b70f58cc32105"
 
 [[package]]
 name = "jsonc2json"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "json_comments",
  "pyo3",
