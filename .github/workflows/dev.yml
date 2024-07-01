@@ -40,7 +40,7 @@ jobs:
         shell: bash
         run: |
           set -e
-          pip install jsonc2json --find-links dist --force-reinstall
+          pip install jsonc2json --find-links dist --force-reinstall --no-index
           pip install -r requirements.dev.txt
           pip install pytest
           pytest
