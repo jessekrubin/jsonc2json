@@ -91,7 +91,7 @@ jobs:
             pip3 install -U pip pytest pytest-asyncio pytest-benchmark
           run: |
             set -e
-            pip3 install jsonc2json --find-links dist --force-reinstall
+            pip3 install jsonc2json --find-links dist --force-reinstall --no-index
             pytest
 
   windows:
