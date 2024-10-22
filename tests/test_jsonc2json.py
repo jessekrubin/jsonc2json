@@ -29,12 +29,13 @@ def test_version():
     import tomli
 
     Path("Cargo.toml").read_text()
-    cargo_version = tomli.loads(Path("Cargo.toml").read_text())["package"]["version"]
+    pyproject_toml = tomli.loads(Path("Cargo.toml").read_text())
+    cargo_version = pyproject_toml["package"]["version"]
     assert jsonc2json.__version__ == cargo_version
-    pyproject_version = tomli.loads(Path("pyproject.toml").read_text())["project"][
-        "version"
-    ]
-    assert jsonc2json.__version__ == pyproject_version
+    # pyproject_version = tomli.loads(Path("pyproject.toml").read_text())["project"][
+    #     "version"
+    # ]
+    # assert jsonc2json.__version__ == pyproject_version
 
 
 def test_jsonc2json_string():

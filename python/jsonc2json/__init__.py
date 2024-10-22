@@ -54,12 +54,17 @@ Examples:
 from __future__ import annotations
 
 from typing import AnyStr
-from ._jsonc2json import jsonc2json_bin, jsonc2json_str, __version_lib__, __build_profile__
+from ._jsonc2json import (
+    jsonc2json_bin,
+    jsonc2json_str,
+    __version_lib__,
+    __build_profile__,
+)
 
 __version__ = __version_lib__
 __all__ = (
-    "__version__",
     "__build_profile__",
+    "__version__",
     "jsonc2json",
     "jsonc2json_bin",
     "jsonc2json_str",

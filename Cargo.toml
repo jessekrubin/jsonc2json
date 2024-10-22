@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 json_comments = "0.2.2"
-pyo3 = "0.22.0"
+pyo3 = "0.22.5"
 
 [build-dependencies]
-pyo3-build-config = "0.22.0"
+pyo3-build-config = "0.22.5"
