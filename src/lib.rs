@@ -51,11 +51,17 @@ fn jsonc2json_str(string: String) -> PyResult<String> {
     }
 }
 
+fn lib_constants(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add("__version_lib__", env!("CARGO_PKG_VERSION"))?;
+    m.add("__build_profile__", env!("PROFILE"))?;
+    Ok(())
+}
+
 /// A Python module implemented in Rust.
 #[pymodule]
 #[pyo3(name = "_jsonc2json")]
 fn libjsonc2json(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add("__version_lib__", env!("CARGO_PKG_VERSION"))?;
+    lib_constants(m)?;
     m.add_function(wrap_pyfunction!(jsonc2json_str, m)?)?;
     m.add_function(wrap_pyfunction!(jsonc2json_bin, m)?)?;
     Ok(())

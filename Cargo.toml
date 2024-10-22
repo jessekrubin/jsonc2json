@@ -1,6 +1,6 @@
 [package]
 name = "jsonc2json"
-version = "0.0.4"
+version = "0.1.0"
 edition = "2021"
 include = ["src/**/*", "Cargo.toml", "LICENSE", "README.md"]
 
@@ -10,4 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 json_comments = "0.2.2"
-pyo3 = "0.21.2"
+pyo3 = "0.22.5"
+
+[build-dependencies]
+pyo3-build-config = "0.22.5"
