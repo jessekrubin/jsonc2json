@@ -12,5 +12,4 @@ __all__ = (
 )
 __title__ = "jsonc2json"
 __description__ = "strip comments from JSONC (JSON with comments)"
-__pkgroot__ = __file__.replace("__about__.py", "").rstrip("/\\")
 __version__ = __version_lib__
