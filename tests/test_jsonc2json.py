@@ -3,8 +3,7 @@ import json
 import jsonc2json as jsonc2json
 import pytest
 
-PWD = Path(__file__).parent
-REPO_ROOT = PWD.parent
+REPO_ROOT = Path.cwd()
 
 JSONC_STRING = """
 {
